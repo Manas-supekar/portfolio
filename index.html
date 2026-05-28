@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manas Supekar | Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --accent-gradient: linear-gradient(135deg, #6366f1, #a855f7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(168, 85, 247, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center; /* Centered navigation items since logo is removed */
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #a855f7;
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7rem 2rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 850px;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #818cf8;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.05em;
+        }
+
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        .hero-contact-info span i {
+            color: #a855f7;
+            margin-right: 0.4rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1.6rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 15px var(--border-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Container Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        /* Grid Framework */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        /* Skills Layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            color: #a855f7;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Projects Section */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-header i {
+            font-size: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-bullets {
+            margin-bottom: 1.5rem;
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-bullets li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Hackathons Timeline */
+        .timeline {
+            position: relative;
+            border-left: 2px solid rgba(168, 85, 247, 0.2);
+            padding-left: 2rem;
+            margin-left: 1rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-2rem - 7px);
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #6366f1;
+            box-shadow: 0 0 10px #6366f1;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: #a855f7;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #090d16;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            section { padding: 4rem 1.5rem; }
+            .hero-contact-info { flex-direction: column; gap: 0.5rem; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <!-- Brand initials completely removed as requested -->
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#hackathons">Achievements</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Header -->
+    <header id="about">
+        <div class="hero-content">
+            <div class="badge">Available for Full-Time Roles</div>
+            <h1>Hi, I'm <span class="gradient-text">Manas Supekar</span></h1>
+            <p class="hero-tagline">Data Science & AI | Engineering End-to-End Analytics Solutions.</p>
+            
+            <div class="hero-contact-info">
+                <span><i class="fa-solid fa-location-dot"></i> Ulhasnagar, Maharashtra</span>
+                <span><i class="fa-solid fa-phone"></i> +91 9021086915</span>
+                <span><i class="fa-solid fa-envelope"></i> Manassupekar45@gmail.com</span>
+            </div>
+            
+            <div class="social-buttons">
+                <a href="Manas_Supekar_Resume.pdf" target="_blank" class="btn btn-primary">
+                    <i class="fa-solid fa-file-pdf"></i> View Resume
+                </a>
+                <a href="https://github.com/Manas-supekar" target="_blank" class="btn btn-secondary">
+                    <i class="fa-brands fa-github"></i> GitHub Profile
+                </a>
+                <a href="https://www.linkedin.com/in/manas-supekar-672893321/" target="_blank" class="btn btn-secondary">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tools & Technologies Section -->
+    <section id="skills">
+        <h2 class="section-title">Tools & Technologies</h2>
+        <div class="skills-grid">
+            
+            <!-- Category 1: Tools -->
+            <div class="card skill-category">
+                <h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools</h3>
+                <div class="tags">
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Excel</span>
+                    <span class="tag">EDA</span>
+                    <span class="tag">Machine Learning</span>
+                </div>
+            </div>
+
+            <!-- Category 2: Development -->
+            <div class="card skill-category">
+                <h3><i class="fa-solid fa-code"></i> Development</h3>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Generative AI</span>
+                    <span class="tag">Streamlit</span>
+                    <span class="tag">R Prog</span>
+                </div>
+            </div>
+
+            <!-- Category 3: Special Focus -->
+            <div class="card skill-category" style="grid-column: 1 / -1;">
+                <h3><i class="fa-solid fa-database"></i> Specialized Scale</h3>
+                <div class="tags">
+                    <span class="tag">Big Data Analysis and Engineering</span>
+                    <span class="tag">Database Management</span>
+                    <span class="tag">Predictive Systems</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid">
+            
+            <!-- Project 1 -->
+            <div class="card project-card">
+                <div>
+                    <div class="project-header"><i class="fa-solid fa-brain"></i></div>
+                    <h3 class="project-title">Mental Health Tracker (SIH 2025)</h3>
+                    <p class="project-desc">AI-powered wellness application featuring risk-tier classification frameworks.</p>
+                    <ul class="project-bullets">
+                        <li>Designed a questionnaire evaluation engine metrics mapping stress levels.</li>
+                        <li>Configured targeted responsive interaction structures depending on dangerous risk thresholds.</li>
+                        <li>Integrated visual dynamic history trackers alongside user reward gamification elements.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="tags" style="margin-bottom: 1.5rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">Generative AI</span>
+                        <span class="tag">Data Visualization</span>
+                    </div>
+                    <a href="https://github.com/Manas-supekar" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                        <i class="fa-brands fa-github"></i> View Project Source
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card project-card">
+                <div>
+                    <div class="project-header"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 class="project-title">Zomato Exploratory Data Analysis</h3>
+                    <p class="project-desc">Data mining execution addressing real-world sales distribution logs.</p>
+                    <ul class="project-bullets">
+                        <li>Evaluated, parsed, and scrubbed structural features across 10,000+ data instances.</li>
+                        <li>Identified major internal revenue pathways and recurring demand seasonality traits.</li>
+                        <li>Configured repeatable engineering extraction arrays to standardize cleansing procedures.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="tags" style="margin-bottom: 1.5rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">EDA</span>
+                        <span class="tag">Data Visualization</span>
+                    </div>
+                    <a href="https://github.com/Manas-supekar" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                        <i class="fa-brands fa-github"></i> View Project Source
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="card project-card">
+                <div>
+                    <div class="project-header"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3 class="project-title">DigiSeva Booking Platform</h3>
+                    <p class="project-desc">Full-stack processing system connecting localized independent task networks.</p>
+                    <ul class="project-bullets">
+                        <li>Programmed a secure multi-dashboard profile environment (Customer, Professional, Admin).</li>
+                        <li>Engineered relational backend storage structures optimizing profile ratings and transactional validation.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="tags" style="margin-bottom: 1.5rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                    <a href="https://github.com/Manas-supekar" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                        <i class="fa-brands fa-github"></i> View Project Source
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="hackathons">
+        <h2 class="section-title">Hackathons & Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <h3>Top 3 Finisher — Smart India Hackathon</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">Engineered an advanced user-monitoring application under accelerated milestone environments using modular tracking frameworks.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024</div>
+                <h3>Top 3 Finisher (College Round) — Smart India Hackathon</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">Built an isolated script engine mapping duplicate registry instances across relational data storage sets.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024 - 2027</div>
+                <h3>B.Sc. in Data Science & Analytics (Minor: AI)</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">VESASC College. Rigorous structural background across Big Data engineering, analytical visualization, and machine learning models.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Manas Supekar. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: rgba(255,255,255,0.2);">Designed for crisp visual impact & responsive utility.</p>
+    </footer>
+
+</body>
+</html>
